@@ -1,0 +1,39 @@
+@postId = 48m9uo35fdudqs9yyef6
+@sender = Yael
+@comment_id = d36vx4h48r5el725kaf1
+@post_id = post123
+
+# Posts
+
+### Add a new Post
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "sender": "{{sender}}",
+    "title": "First Post",
+    "content": "Hi, This is my first post"
+}
+
+### Get all posts
+
+GET http://localhost:3000/posts
+
+### Get a post by id
+
+GET http://localhost:3000/posts/{{postId}}
+
+### Get posts by sender
+
+GET http://localhost:3000/posts?sender={{sender}}
+
+
+### Update a post
+
+PUT http://localhost:3000/posts/{{postId}}
+Content-Type: application/json
+
+{
+    "title": "Updated post",
+    "content": "This is the post after updating it."
+}
