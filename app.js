@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const postsRoutes = require("./routes/posts");
+const bodyParser = require("body-parser");
 const port = process.env.PORT;
 
 const mongoose = require("mongoose");
@@ -12,6 +14,10 @@ db.once("open", () => {
   console.log("Connected to the database");
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/posts", postsRoutes);
+
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at  http://localhost:${port}`);
 });
